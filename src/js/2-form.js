@@ -1,8 +1,8 @@
-const form = document.querySelector('.feedback-form')
+const form = document.querySelector(".feedback-form");
 const emailRef = document.querySelector("[name='email']");
 const messageRef = document.querySelector("[name='message']");
 
-form.addEventListener('input', onDataFormInput)
+form.addEventListener("input", onDataFormInput);
 
 function onDataFormInput() {
     const formData = {
@@ -10,28 +10,28 @@ function onDataFormInput() {
         message: messageRef.value.trim(),
     }
     localStorage.setItem("feedback-form-state", JSON.stringify(formData))
-}
+};
 
 
-if (localStorage.length !== 0) {
+if (localStorage.getItem("feedback-form-state") !== null) {
     const getParse = JSON.parse(localStorage.getItem("feedback-form-state"))
     emailRef.value = getParse.email
     messageRef.value = getParse.message
-}
+};
 
-form.addEventListener('submit', onFormSubmit)
+form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(e) {
     e.preventDefault();
-    if (emailRef.value && messageRef.value) {
+    if (emailRef.value.trim() !== "" && messageRef.value.trim() !== "") {
         const userData = {
-        email: this.email.value,
-        message: this.message.value,
+        email: emailRef.value.trim(),
+        message: messageRef.value.trim(),
     }
-    localStorage.removeItem('feedback-form-state')
+    localStorage.removeItem("feedback-form-state")
     form.reset()
     console.log(userData);
     } else {
-        alert('All fields must be filled in')
+        alert("All fields must be filled in")
     }
-}
+};

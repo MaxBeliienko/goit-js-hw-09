@@ -66,9 +66,9 @@ const images = [
       "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
     description: "Lighthouse Coast Sea",
   },
-]
+];
 
-const galleryList = document.querySelector('ul.gallery')
+const galleryList = document.querySelector('ul.gallery');
 const oneImgMarkup = images
   .map(({ preview, original, description }) => `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
@@ -76,22 +76,17 @@ const oneImgMarkup = images
       class="gallery-image"
       src="${preview}"
       alt="${description}"
-      width=360
     />
   </a>
 </li>`)
-  .join('')
+  .join('');
     
 
-galleryList.insertAdjacentHTML('beforeend', oneImgMarkup)
+galleryList.insertAdjacentHTML('beforeend', oneImgMarkup);
 
 const galleryOptions = {
-  captions: true,
-  captionSelector: 'img',
-  captionType: 'attr',
   captionsData: 'alt',
-  captionPosition: 'bottom',
   captionDelay: 250,
-}
+};
 
 const lightbox = new SimpleLightbox('.gallery a', galleryOptions);

@@ -34,6 +34,10 @@ a {
     width: calc((100% - 48px) / 3);
 }
 
+.gallery img {
+    width: 360px;
+}
+
 .gallery {
     display: flex;
     gap: 24px;
